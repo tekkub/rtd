@@ -2,46 +2,9 @@
   <head>
     <title>RTD LightRail Schedule</title>
     <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
-    <style>
-      h1 {
-        font-size: 250%;
-      }
-
-      h2, p, table {
-        font-size: 150%;
-      }
-
-      h1, h2 {
-        text-align: center;
-      }
-
-      h2 {
-        background: #FFFFCC;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      tr:nth-child(2n) {
-        background-color: lightgrey;
-      }
-
-      td {
-        padding: 3px;
-        width: 33%;
-        text-align: center;
-      }
-
-      tr.bonus {
-        background-color: #E6CCCC;
-      }
-
-      .bonus, .bonus td {
-        color: maroon;
-      }
-    </style>
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
   </head>
 
   <body>
@@ -67,7 +30,7 @@
     </table>
 
     <h2>Southbound</h2>
-    <table>
+    <table id="southbound">
       <tr>
         <th>20th &amp; Welton</th>
         <th>16th &amp; Stout</th>
@@ -141,6 +104,9 @@
     </table>
 
     <p class="bonus">Red times are Saturday, Sunday and holidays only.</p>
+
+    <button id="show_all">Show all</button>
+    <button id="show_next">Show upcoming</button>
 
   </body>
 </html>

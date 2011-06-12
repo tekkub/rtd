@@ -1,0 +1,39 @@
+
+h1 {
+  font-size: 250%;
+}
+
+h2, p, table {
+  font-size: 150%;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h2 {
+  background: #FFFFCC;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:nth-child(2n) {
+  background-color: lightgrey;
+}
+
+td {
+  padding: 3px;
+  width: 33%;
+  text-align: center;
+}
+
+tr.bonus {
+  background-color: #E6CCCC;
+}
+
+.bonus, .bonus td {
+  color: maroon;
+}
