@@ -11,7 +11,7 @@ $(function() {
       // eq(1) checks the SECOND column, so we don't miss a train that's between 20th and 16th
       var this_time = Number($(this).find("td:eq(1)").text())
       if (this_time < now_time || (past_midnight && this_time >= 400)) {
-        console.log("Hiding SB " + this_time, this_time < now_time, past_midnight, this_time >= 400)
+        // console.log("Hiding SB " + this_time, this_time < now_time, past_midnight, this_time >= 400)
         $(this).hide()
         $("#show_all").show()
         $("#show_next").hide()
@@ -20,7 +20,7 @@ $(function() {
 
     var this_day = now.getDay()
     var is_weekend = (this_day == 6 || this_day == 0 || this_day == 1 && past_midnight)
-    console.log("Weekend: "+ is_weekend)
+    // console.log("Weekend: "+ is_weekend)
     if (!is_weekend) $(".bonus").hide();
 
     // Never have an empty table
@@ -38,7 +38,7 @@ $(function() {
 
   recheck_trains = function() {
     if ($("#show_all").is(':visible')) {
-      console.log("Rechecking")
+      // console.log("Rechecking")
       showNext()
     }
   }
