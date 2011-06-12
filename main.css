@@ -18,6 +18,7 @@ h2 {
 table {
   width: 100%;
   border-collapse: collapse;
+  margin: 10px 0;
 }
 
 tr:nth-child(2n) {
