@@ -6,8 +6,8 @@ $(function() {
     var now_time = now.getHours()*100 + now.getMinutes()
     var past_midnight = now_time < 400
 
-    // n+2 to skip the header row
-    $("#southbound tr:nth-child(n+2)").each(function() {
+    // gt(0) to skip the header row
+    $("#southbound tr:gt(0)").each(function() {
       // eq(1) checks the SECOND column, so we don't miss a train that's between 20th and 16th
       var this_time = Number($(this).find("td:eq(1)").text())
       if (this_time < now_time || (past_midnight && this_time >= 400)) {
