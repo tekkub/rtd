@@ -17,6 +17,7 @@ $(function() {
         $("#show_next").hide()
       }
     })
+    $("#southbound tr:shown:gt(3)").hide()
 
     var this_day = now.getDay()
     var is_weekend = (this_day == 6 || this_day == 0 || this_day == 1 && past_midnight)
@@ -24,7 +25,11 @@ $(function() {
     if (!is_weekend) $(".bonus").hide();
 
     // Never have an empty table
-    if ($("#southbound tr:visible").size() < 2) $("#southbound tr").show();
+    if ($("#southbound tr:visible").size() < 2) {
+      // console.log("Don't want empty table")
+      $("#southbound tr:lt(4)").show()
+      if ($("#southbound tr.bonus:visible").size() == 0) $(".bonus").hide();
+    }
   }
 
   $("#show_next").click(showNext)
