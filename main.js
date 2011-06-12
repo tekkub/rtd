@@ -22,6 +22,9 @@ $(function() {
     var is_weekend = (this_day == 6 || this_day == 0 || this_day == 1 && past_midnight)
     console.log("Weekend: "+ is_weekend)
     if (!is_weekend) $(".bonus").hide();
+
+    // Never have an empty table
+    if ($("#southbound tr:visible").size() < 2) $("#southbound tr").show();
   }
 
   $("#show_next").click(showNext)
