@@ -1,6 +1,12 @@
 var recheck_trains
 
 $(function() {
+  function teklog() {
+    if (location.host == "localhost") {
+      console.log.apply(console, arguments)
+    }
+  }
+
   function showNext() {
     var now = new Date()
     var now_time = now.getHours()*100 + now.getMinutes()
@@ -11,7 +17,7 @@ $(function() {
       // eq(1) checks the SECOND column, so we don't miss a train that's between 20th and 16th
       var this_time = Number($(this).find("td:eq(1)").text())
       if (this_time < now_time || (past_midnight && this_time >= 400)) {
-        // console.log("Hiding SB " + this_time, this_time < now_time, past_midnight, this_time >= 400)
+        teklog("Hiding SB " + this_time, this_time < now_time, past_midnight, this_time >= 400)
         $(this).hide()
         $("#show_all").show()
         $("#show_next").hide()
@@ -21,12 +27,12 @@ $(function() {
 
     var this_day = now.getDay()
     var is_weekend = (this_day == 6 || this_day == 0 || this_day == 1 && past_midnight)
-    // console.log("Weekend: "+ is_weekend)
+    teklog("Weekend: "+ is_weekend)
     if (!is_weekend) $(".bonus").hide();
 
     // Never have an empty table
     if ($("#southbound tr:visible").size() < 2) {
-      // console.log("Don't want empty table")
+      teklog("Don't want empty table")
       $("#southbound tr:lt(4)").show()
       if ($("#southbound tr.bonus:visible").size() == 0) $(".bonus").hide();
     }
@@ -43,7 +49,7 @@ $(function() {
 
   recheck_trains = function() {
     if ($("#show_all").is(':visible')) {
-      // console.log("Rechecking")
+      teklog("Rechecking")
       showNext()
     }
   }
