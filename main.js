@@ -17,7 +17,7 @@ $(function() {
         $("#show_next").hide()
       }
     })
-    $("#southbound tr:shown:gt(3)").hide()
+    $("#southbound tr:visible:gt(3)").hide()
 
     var this_day = now.getDay()
     var is_weekend = (this_day == 6 || this_day == 0 || this_day == 1 && past_midnight)
