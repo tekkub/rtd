@@ -34,8 +34,9 @@ $(function() {
     if ($("#southbound tr:visible").size() < 2) {
       teklog("Don't want empty table")
       $("#southbound tr:lt(4)").show()
-      if ($("#southbound tr.bonus:visible").size() == 0) $(".bonus").hide();
     }
+
+    if ($("#southbound tr.bonus:visible").size() == 0) $(".bonus").hide();
   }
 
   $("#show_next").click(showNext)
