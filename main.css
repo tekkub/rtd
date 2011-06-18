@@ -1,4 +1,11 @@
 
+h1 {
+  font-size: 250%;
+}
+
+h2, p, table {
+  font-size: 150%;
+}
 
 h1, h2 {
   text-align: center;
