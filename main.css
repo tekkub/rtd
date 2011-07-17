@@ -31,6 +31,12 @@ header h1, header h2 {
   margin: 1.2rem 1rem;
 }
 
+header h1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 header h2 {
   position: absolute;
   right: 0;
@@ -38,6 +44,8 @@ header h2 {
 }
 
 header ul {
+  position: absolute;
+  top: 5.4rem;
   width: 100%;
   margin: 0;
   font-weight: bold;
