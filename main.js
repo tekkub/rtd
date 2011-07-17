@@ -103,5 +103,17 @@ $(function() {
   })
 
 
+  // Ditch the addy bar on android
   window.scrollTo(0,1)
+
+
+  var measure = document.createElement('div')
+  measure.style.height = '10em'
+  document.body.appendChild(measure)
+  var size = measure.offsetHeight/10
+  document.body.removeChild(measure)
+  if (size != 24) {
+    teklog("Attempting to adjust size", size)
+    $("html").css("font-size", (24.0 / size * 0.625) + "%")
+  }
 })
