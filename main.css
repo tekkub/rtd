@@ -1,18 +1,23 @@
 
-h1 {
+h1, h2 {
   font-size: 250%;
+  display: inline-block;
+  width: 49.5%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-h2, p, table {
+p, table {
   font-size: 150%;
 }
 
-h1, h2 {
-  text-align: center;
+h1 {
+  text-align: left;
+  margin-left: 10px;
 }
 
 h2 {
-  background: #FFFFCC;
+  text-align: right;
 }
 
 table {
@@ -37,4 +42,16 @@ tr.bonus {
 
 .bonus, .bonus td {
   color: maroon;
+}
+
+#north, #northbound {
+  display: none;
+}
+
+#north {
+  color: #005000;
+}
+
+#south {
+  color: #500000;
 }

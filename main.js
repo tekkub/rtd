@@ -10,7 +10,7 @@ $(function() {
     }
   }
 
-  function showNext() {
+  recheck_trains = function() {
     var now = new Date()
     var now_time = now.getHours()*100 + now.getMinutes()
     var past_midnight = now_time < 400
@@ -22,8 +22,6 @@ $(function() {
       if (this_time < now_time || (past_midnight && this_time >= 400)) {
         // teklog("Hiding SB " + this_time, this_time < now_time, past_midnight, this_time >= 400)
         $(this).hide()
-        $("#show_all").show()
-        $("#show_next").hide()
       }
     })
     $("#southbound tr:visible:gt(3)").hide()
@@ -42,22 +40,19 @@ $(function() {
     if ($("#southbound tr.bonus:visible").size() == 0) $(".bonus").hide();
   }
 
-  $("#show_next").click(showNext)
-  $("#show_all").click(function() {
-    $("#southbound tr, .bonus").show()
-    $("#show_all").hide()
-    $("#show_next").show()
-  })
-
-  showNext()
-
-  recheck_trains = function() {
-    if ($("#show_all").is(':visible')) {
-      // teklog("Rechecking")
-      showNext()
-    }
-  }
+  recheck_trains()
   setInterval("recheck_trains()",'10000')
+
+
+  // Table toggle
+  $("#north").click(function() {
+    $("#north, #northbound").hide()
+    $("#south, #southbound").show()
+  })
+  $("#south").click(function() {
+    $("#north, #northbound").show()
+    $("#south, #southbound").hide()
+  })
 
 
   // Northbound
