@@ -32,12 +32,14 @@ header h1, header h2 {
 }
 
 header h1 {
+  margin-right: 0;
 /*  position: absolute;*/
 /*  left: 0;*/
 /*  top: 0;*/
 }
 
 header h2 {
+  margin-left: 0;
 /*  position: absolute;*/
 /*  right: 0;*/
 /*  top: 0;*/
@@ -56,6 +58,8 @@ header ul {
 header ul li {
   display: inline-block;
   width: 33%;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
