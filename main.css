@@ -22,7 +22,7 @@ header {
 }
 
 hgroup {
-  position: relative;
+/*  position: relative;*/
   disply: block;
 }
 
@@ -32,20 +32,20 @@ header h1, header h2 {
 }
 
 header h1 {
-  position: absolute;
-  left: 0;
-  top: 0;
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 0;*/
 }
 
 header h2 {
-  position: absolute;
-  right: 0;
-  top: 0;
+/*  position: absolute;*/
+/*  right: 0;*/
+/*  top: 0;*/
 }
 
 header ul {
-  position: absolute;
-  top: 5.4rem;
+/*  position: absolute;*/
+/*  top: 5.4rem;*/
   width: 100%;
   margin: 0;
   font-weight: bold;
