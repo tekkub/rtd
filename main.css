@@ -2,7 +2,7 @@
 h1, h2 {
   font-size: 175%;
   display: inline-block;
-  width: 49%;
+  width: 40%;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -13,17 +13,22 @@ p, table {
 
 h1 {
   text-align: left;
-  margin-left: 10px;
+  position: absolute;
+  left: 10px;
+  top: 0px;
 }
 
 h2 {
   text-align: right;
+  position: absolute;
+  right: 10px;
+  top: 0px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 10px 0;
+  margin: 40px 0 10px 0;
 }
 
 tr:nth-child(2n) {
