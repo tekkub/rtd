@@ -20,29 +20,21 @@ $(function() {
 
     var timetable = []
 
-    $.each(schedule, function(i,v) {
-      var hour = v[0] / 100
-      var min = v[0] % 100
-      var baseTime = new Date(year, month, day, hour, min, 0, 0)
+    $.each([-24, 0, 24], function(i,offset) {
+      $.each(schedule, function(j,v) {
+        var hour = v[0] / 100
+        var min = v[0] % 100
+        var todayTime = new Date(year, month, day, hour, min, 0, 0)
+        var baseTime = new Date(todayTime.getTime() + offset * 60 * 60 * 1000)
 
-      for (t = 0; t <= v[1]; t++) {
-        var thisTime = new Date(baseTime.getTime() + t * v[2] * 60 * 1000)
-        if (thisTime >= now && thisTime < in24hr) timetable.push(timeFunc(thisTime));
-      }
+        for (t = 0; t < v[1]; t++) {
+          var thisTime = new Date(baseTime.getTime() + t * v[2] * 60 * 1000)
+          if (thisTime >= now && thisTime < in24hr) timetable.push(timeFunc(thisTime));
+        }
+      })
     })
 
-    $.each(schedule, function(i,v) {
-      var hour = v[0] / 100
-      var min = v[0] % 100
-      var todayTime = new Date(year, month, day, hour, min, 0, 0)
-      var baseTime = new Date(todayTime.getTime() + 24 * 60 * 60 * 1000)
-
-      for (t = 0; t <= v[1]; t++) {
-        var thisTime = new Date(baseTime.getTime() + t * v[2] * 60 * 1000)
-        if (thisTime >= now && thisTime < in24hr) timetable.push(timeFunc(thisTime));
-      }
-    })
-
+    timetable.sort(function(a,b) { return a["oxford"].getTime() - b["oxford"].getTime() });
     return timetable
   }
 
@@ -53,20 +45,16 @@ $(function() {
   // 18th & cali = oxford + 24min
   // 20th & welton = oxford + 26min
   function getNorthboundTimes(baseTime) {
-    var six   = new Date(baseTime.getTime() + 21 * 60 * 1000)
-    var eight = new Date(baseTime.getTime() + 24 * 60 * 1000)
     return {
       "oxford": baseTime,
-      "sixcali": six,
-      "eightcali": eight,
+      "sixcali": new Date(baseTime.getTime() + 21 * 60 * 1000),
+      "eightcali": new Date(baseTime.getTime() + 24 * 60 * 1000),
     }
   }
   var northSchedule = [
-    [  23,  1, 30], // 00:23 - 00:53 every 30
-    [ 555, 60, 15], // 05:00 - 20:55 every 15
-    [2123,  5, 30], // 21:23 - 23:53 every 30
+    [ 555, 61, 15], // 05:00 - 20:55 every 15
+    [2123,  8, 30], // 21:23 - 00:53 every 30
   ]
-  var northTimetable = buildTimetable(northSchedule, getNorthboundTimes)
 
 
   // Southbound
@@ -75,37 +63,28 @@ $(function() {
   // Theatre = 16th + 2min
   // oxford = 16th + 20min
   function getSouthboundTimes(baseTime) {
-    var twenty = new Date(baseTime.getTime() - 4 * 60 * 1000)
-    var eight  = new Date(baseTime.getTime() - 1 * 60 * 1000)
-    var oxford = new Date(baseTime.getTime() + 20 * 60 * 1000)
     return {
-      "oxford": oxford,
+      "twentywelton": new Date(baseTime.getTime() - 4 * 60 * 1000),
       "sixstout": baseTime,
-      "twentywelton": twenty,
+      "oxford": new Date(baseTime.getTime() + 20 * 60 * 1000),
     }
   }
   var southSchedule = [
-    [  16,  3, 30], // 00:16 - 01:46 every 30
-    [ 525, 66, 15], // 05:25 - 21:55 every 15
-    [2216,  3, 30], // 22:16 - 23:46 every 30
+    [2216,  8, 30], // 22:16 - 01:46 every 30
+    [ 525, 67, 15], // 05:25 - 21:55 every 15
   ]
-  var southTimetable = buildTimetable(southSchedule, getSouthboundTimes)
 
 
   // And the good stuff
   var nb = Tempo.prepare("northbound")
   var sb = Tempo.prepare("southbound")
   rebuild_timetables = function() {
-    var now = new Date()
-    if ((now.getTime() - last_loaded.getTime()) >= 60 * 60 * 1000) {
-      // Reload the page, it's been more than an hour
-      window.location.reload()
-    }
+    teklog("Rebuilding timetable", (new Date()))
 
-    teklog("Rebuilding timetable", now)
     $("#northbound tr:gt(0), #southbound tr:gt(0)").remove()
-    nb.render(northTimetable)
-    sb.render(southTimetable)
+
+    nb.render(buildTimetable(northSchedule, getNorthboundTimes))
+    sb.render(buildTimetable(southSchedule, getSouthboundTimes))
   }
   rebuild_timetables()
   setInterval("rebuild_timetables()",'10000')
