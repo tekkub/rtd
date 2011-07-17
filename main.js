@@ -101,4 +101,7 @@ $(function() {
     $(".north").show()
     $(".south").hide()
   })
+
+
+  window.scrollTo(0,1)
 })
