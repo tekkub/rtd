@@ -114,6 +114,6 @@ $(function() {
   document.body.removeChild(measure)
   if (size != 24) {
     teklog("Attempting to adjust size", size)
-    $("html").css("font-size", (24.0 / size * 0.625) + "%")
+    $("html").css("font-size", (24.0 / size * 0.625 * 100) + "%")
   }
 })
