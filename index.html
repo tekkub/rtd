@@ -5,6 +5,7 @@
     <meta http-equiv="cache-control" content="max-age=10, must-revalidate" />
     <link rel="stylesheet" href="main.css" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="tempo.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </head>
 
@@ -12,21 +13,16 @@
     <h1>D line</h1>
 
     <h2>Northbound</h2>
-    <table>
+    <table id="northbound">
       <tr>
-        <th>Schedule</th>
-        <th>From</th>
-        <th>Until</th>
+        <th>Oxford</th>
+        <th>16th &amp; Cali</th>
+        <th>18th &amp; Cali</th>
       </tr>
-      <tr>
-        <td>&#x21BB;15 min</td>
-        <td>0555</td>
-        <td>2055</td>
-      </tr>
-      <tr>
-        <td>&#x21BB;30 min</td>
-        <td>2123</td>
-        <td>0053</td>
+      <tr data-template>
+        <td>{{ oxford | date 'HH:mm' }}</td>
+        <td>{{ sixcali | date 'HH:mm' }}</td>
+        <td>{{ eightcali | date 'HH:mm' }}</td>
       </tr>
     </table>
 
