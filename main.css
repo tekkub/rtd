@@ -5,6 +5,8 @@ html {
 
 body {
   font-size: 2.4rem;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2 {
@@ -50,7 +52,7 @@ header ul li {
 }
 
 table {
-  width: 99%;
+  width: 100%;
   position: absolute;
   top: 9.6rem;
   border-collapse: collapse;
