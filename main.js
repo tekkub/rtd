@@ -83,7 +83,7 @@ $(function() {
   rebuild_timetables = function() {
     teklog("Rebuilding timetable", (new Date()))
 
-    $("#northbound tr:gt(0), #southbound tr:gt(0)").remove()
+    $("#northbound tr, #southbound tr").remove()
 
     nb.render(buildTimetable(northSchedule, getNorthboundTimes))
     sb.render(buildTimetable(southSchedule, getSouthboundTimes))
@@ -94,11 +94,11 @@ $(function() {
 
   // Table toggle
   $("#north").click(function() {
-    $("#north, #northbound").hide()
-    $("#south, #southbound").show()
+    $(".north").hide()
+    $(".south").show()
   })
   $("#south").click(function() {
-    $("#north, #northbound").show()
-    $("#south, #southbound").hide()
+    $(".north").show()
+    $(".south").hide()
   })
 })

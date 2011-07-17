@@ -1,54 +1,70 @@
 
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2.4rem;
+}
+
 h1, h2 {
-  font-size: 175%;
+  font-size: 3.0rem;
+}
+
+header {
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+hgroup {
+  position: relative;
+}
+
+header h1, header h2 {
   display: inline-block;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 1.2rem 1rem;
 }
 
-p, table {
-  font-size: 150%;
-}
-
-h1 {
-  text-align: left;
+header h2 {
   position: absolute;
-  left: 10px;
-  top: 0px;
+  right: 0;
+  top: 0;
 }
 
-h2 {
-  text-align: right;
-  position: absolute;
-  right: 10px;
-  top: 0px;
-}
-
-table {
+header ul {
   width: 100%;
-  border-collapse: collapse;
-  margin: 40px 0 10px 0;
+  margin: 0;
+  font-weight: bold;
+  list-style-type: none;
+  padding-left: 0;
 }
 
-tr:nth-child(2n) {
-  background-color: lightgrey;
-}
-
-td {
-  padding: 3px;
+header ul li {
+  display: inline-block;
   width: 33%;
   text-align: center;
 }
 
-tr.bonus {
-  background-color: #E6CCCC;
+table {
+  width: 99%;
+  position: absolute;
+  top: 9.6rem;
+  border-collapse: collapse;
 }
 
-.bonus, .bonus td {
-  color: maroon;
+tr:nth-child(2n+1) {
+  background-color: lightgrey;
 }
 
-#north, #northbound {
+td {
+  text-align: center;
+}
+
+.north {
   display: none;
 }
 

@@ -1,3 +1,4 @@
+<!doctype html>
 <html manifest="cache.manifest">
   <head>
     <title>RTD LightRail Schedule</title>
@@ -10,15 +11,25 @@
   </head>
 
   <body>
-    <h1>D line</h1>
+    <header>
+      <hgroup>
+        <h1>D line</h1>
+        <h2 id="south" class="south">Southbound</h2>
+        <h2 id="north" class="north">Northbound</h2>
+      </hgroup>
+      <ul class="south">
+        <li>20th &amp; Welton</li>
+        <li>16th &amp; Stout</li>
+        <li>Oxford</li>
+      </ul>
+      <ul class="north">
+        <li>Oxford</li>
+        <li>16th &amp; Cali</li>
+        <li>18th &amp; Cali</li>
+      </ul>
+    </header>
 
-    <h2 id="south">Southbound</h2>
-    <table id="southbound">
-      <tr>
-        <th>20th &amp; Welton</th>
-        <th>16th &amp; Stout</th>
-        <th>Oxford</th>
-      </tr>
+    <table id="southbound" class="south">
       <tr data-template>
         <td>{{ twentywelton | date 'HH:mm' }}</td>
         <td>{{ sixstout | date 'HH:mm' }}</td>
@@ -26,13 +37,7 @@
       </tr>
     </table>
 
-    <h2 id="north">Northbound</h2>
-    <table id="northbound">
-      <tr>
-        <th>Oxford</th>
-        <th>16th &amp; Cali</th>
-        <th>18th &amp; Cali</th>
-      </tr>
+    <table id="northbound" class="north">
       <tr data-template>
         <td>{{ oxford | date 'HH:mm' }}</td>
         <td>{{ sixcali | date 'HH:mm' }}</td>
