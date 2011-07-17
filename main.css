@@ -22,7 +22,6 @@ header {
 }
 
 hgroup {
-/*  position: relative;*/
   disply: block;
 }
 
@@ -33,34 +32,26 @@ header h1, header h2 {
 
 header h1 {
   margin-right: 0;
-/*  position: absolute;*/
-/*  left: 0;*/
-/*  top: 0;*/
 }
 
 header h2 {
   margin-left: 0;
   float: right;
-/*  position: absolute;*/
-/*  right: 0;*/
-/*  top: 0;*/
 }
 
-header ul {
-/*  position: absolute;*/
-/*  top: 5.4rem;*/
+header table {
+  position: relative;
+  top: 0;
   width: 100%;
-  margin: 0;
   font-weight: bold;
-  list-style-type: none;
-  padding-left: 0;
 }
 
-header ul li {
-  display: inline-block;
-  width: 32%;
-  margin: 0;
-  padding: 0;
+header tr:nth-child(2n+1) {
+  background: none;
+}
+
+header th {
+  width: 33%;
   text-align: center;
 }
 
