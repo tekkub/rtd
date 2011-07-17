@@ -26,10 +26,11 @@ $(function() {
         var min = v[0] % 100
         var todayTime = new Date(year, month, day, hour, min, 0, 0)
         var baseTime = new Date(todayTime.getTime() + offset * 60 * 60 * 1000)
+        var weekend = (baseTime.getDay() == 0 || baseTime.getDay() == 6)
 
         for (t = 0; t < v[1]; t++) {
           var thisTime = new Date(baseTime.getTime() + t * v[2] * 60 * 1000)
-          if (thisTime >= now && thisTime < in24hr) timetable.push(timeFunc(thisTime));
+          if (thisTime >= now && thisTime < in24hr && (!v[3] || weekend)) timetable.push(timeFunc(thisTime));
         }
       })
     })
@@ -72,6 +73,7 @@ $(function() {
   var southSchedule = [
     [2216,  8, 30], // 22:16 - 01:46 every 30
     [ 525, 67, 15], // 05:25 - 21:55 every 15
+    [ 216,  1, 15, true],
   ]
 
 
